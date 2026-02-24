@@ -1,41 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap');
 
 :root {
-  /* Discord-inspired Premium Palette */
+  /* Discord-inspired Premium Palette - Refined */
+  --bg-darkest: hsl(220, 15%, 8%);
   --bg-darker: hsl(220, 15%, 10%);
   --bg-dark: hsl(223, 14%, 15%);
   --bg-main: hsl(223, 14%, 19%);
   --bg-light: hsl(223, 14%, 25%);
   --bg-hover: hsl(223, 14%, 30%);
-  
-  --text-normal: hsl(210, 10%, 85%);
-  --text-muted: hsl(214, 8%, 60%);
-  --text-link: hsl(197, 100%, 48%);
-  
-  --accent-primary: hsl(235, 86%, 65%); /* Blurple */
-  --accent-hover: hsl(235, 51%, 52%);
-  --accent-success: hsl(145, 65%, 45%);
-  --accent-warning: hsl(38, 95%, 55%);
-  --accent-danger: hsl(359, 82%, 60%);
-  
-  --status-online: hsl(145, 65%, 45%);
-  --status-idle: hsl(38, 95%, 55%);
-  --status-dnd: hsl(359, 82%, 60%);
-  --status-offline: hsl(214, 8%, 45%);
 
-  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Outfit', sans-serif;
-  
+  --text-normal: hsl(210, 10%, 88%);
+  --text-muted: hsl(214, 8%, 65%);
+  --text-link: hsl(197, 100%, 48%);
+
+  --accent-primary: hsl(235, 86%, 65%);
+  /* Discord Blurple */
+  --accent-hover: hsl(235, 51%, 52%);
+  --accent-success: hsl(145, 65%, 39%);
+  --accent-warning: hsl(38, 95%, 54%);
+  --accent-danger: hsl(359, 82%, 60%);
+
+  --status-online: #23a55a;
+  --status-idle: #f0b232;
+  --status-dnd: #f23f43;
+  --status-offline: #80848e;
+
+  --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Outfit', 'Inter', sans-serif;
+
   --sidebar-width: 240px;
   --nav-width: 72px;
   --header-height: 48px;
-  
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
-  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+
+  --transition-fast: 0.1s ease;
+  --transition-normal: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 4px rgba(0, 0, 0, 0.16);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.24);
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
 }
 
 * {
@@ -46,17 +54,23 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--bg-darkest);
+}
+
 body {
   font-family: var(--font-main);
-  background-color: var(--bg-main);
   color: var(--text-normal);
   line-height: 1.5;
-  height: 100vh;
-  overflow: hidden;
+  font-size: 15px;
 }
 
 #root {
-  height: 100vh;
+  height: 100%;
   display: flex;
 }
 
@@ -66,6 +80,12 @@ button {
   background: none;
   font-family: inherit;
   transition: var(--transition-fast);
+  color: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
 }
 
 ::-webkit-scrollbar {
@@ -78,7 +98,7 @@ button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-darker);
+  background: var(--bg-darkest);
   border-radius: 10px;
 }
 
@@ -86,22 +106,27 @@ button {
   background: var(--bg-light);
 }
 
-/* Base Utility Classes */
+/* Glassmorphism Class */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* Utility Classes */
 .flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-@media (max-width: 768px) {
-  :root {
-    --sidebar-width: 0px;
-  }
+.flex-col {
+  flex-direction: column;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
